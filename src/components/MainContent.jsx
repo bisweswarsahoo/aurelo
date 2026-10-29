@@ -1,15 +1,15 @@
 import React from 'react';
 import { useAudio } from '../context/AudioContext';
-import { 
-    Search, 
-    X, 
-    Play, 
-    Pause, 
-    Heart, 
-    Menu, 
-    Sparkles, 
-    Clock, 
-    Headphones 
+import {
+    Search,
+    X,
+    Play,
+    Pause,
+    Heart,
+    Menu,
+    Sparkles,
+    Clock,
+    Headphones
 } from 'lucide-react';
 
 const formatTime = (seconds) => {
@@ -47,8 +47,8 @@ const MainContent = () => {
             return tracks;
         }
         const cat = activeCategory.toLowerCase();
-        return tracks.filter(t => 
-            t.genre.toLowerCase().includes(cat) || 
+        return tracks.filter(t =>
+            t.genre.toLowerCase().includes(cat) ||
             t.category.toLowerCase().includes(cat)
         );
     }, [tracks, activeCategory, likedTrackIds]);
@@ -66,12 +66,12 @@ const MainContent = () => {
 
     return (
         <main className="flex-1 flex flex-col overflow-hidden relative">
-            
+
             {/* Sticky Glassmorphic Header */}
             <header className="sticky top-0 z-30 px-4 sm:px-8 py-3.5 glass-panel border-b border-white/5 flex items-center justify-between gap-4">
-                
+
                 <div className="flex items-center gap-3 flex-1 max-w-2xl">
-                    <button 
+                    <button
                         onClick={() => setIsSidebarOpen(true)}
                         className="md:hidden p-2 rounded-xl bg-white/5 hover:bg-white/10 text-neutral-300 hover:text-white transition-all"
                     >
@@ -108,21 +108,14 @@ const MainContent = () => {
                             <button
                                 key={cat.id}
                                 onClick={() => setActiveCategory(cat.id)}
-                                className={`px-3.5 py-1.5 rounded-full text-xs transition-all ${
-                                    activeCategory === cat.id
+                                className={`px-3.5 py-1.5 rounded-full text-xs transition-all ${activeCategory === cat.id
                                         ? 'bg-white text-neutral-950 font-bold shadow-sm'
                                         : 'bg-white/5 hover:bg-white/10 text-neutral-300 font-medium'
-                                }`}
+                                    }`}
                             >
                                 {cat.label}
                             </button>
                         ))}
-                    </div>
-
-                    <div className="w-9 h-9 rounded-full bg-gradient-to-tr from-emerald-500 to-cyan-500 p-[1.5px] cursor-pointer shadow-md hover:scale-105 transition-transform">
-                        <div className="w-full h-full rounded-full bg-neutral-900 flex items-center justify-center overflow-hidden">
-                            <span className="text-xs font-bold text-emerald-400">AU</span>
-                        </div>
                     </div>
                 </div>
 
@@ -162,24 +155,24 @@ const MainContent = () => {
                 {/* HERO SPOTLIGHT SECTION */}
                 {!searchQuery && heroTrack && (
                     <section>
-                        <div 
+                        <div
                             className="relative overflow-hidden rounded-3xl p-6 sm:p-8 md:p-10 border border-white/10 glass-panel shadow-2xl transition-all duration-700"
                             style={{
                                 background: `linear-gradient(135deg, ${heroTrack.colors.c1}26 0%, ${heroTrack.colors.c2}15 50%, rgba(10,12,18,0.85) 100%)`
                             }}
                         >
                             {/* Inner Ambient Glow Orbs */}
-                            <div 
-                                className="absolute -right-20 -top-20 w-96 h-96 rounded-full opacity-30 blur-3xl pointer-events-none" 
-                                style={{ background: heroTrack.colors.c1 }} 
+                            <div
+                                className="absolute -right-20 -top-20 w-96 h-96 rounded-full opacity-30 blur-3xl pointer-events-none"
+                                style={{ background: heroTrack.colors.c1 }}
                             />
-                            <div 
-                                className="absolute right-40 -bottom-20 w-80 h-80 rounded-full opacity-20 blur-3xl pointer-events-none" 
-                                style={{ background: heroTrack.colors.c2 }} 
+                            <div
+                                className="absolute right-40 -bottom-20 w-80 h-80 rounded-full opacity-20 blur-3xl pointer-events-none"
+                                style={{ background: heroTrack.colors.c2 }}
                             />
 
                             <div className="relative z-10 flex flex-col md:flex-row items-center gap-6 md:gap-10">
-                                <div 
+                                <div
                                     onClick={() => playTrack(heroTrack)}
                                     className="relative group cursor-pointer flex-shrink-0"
                                 >
@@ -252,13 +245,13 @@ const MainContent = () => {
                                 {activeCategory === 'favorites' ? 'Your Liked Collection' : 'Trending Vibes'}
                             </h2>
                             <p className="text-xs sm:text-sm text-neutral-400">
-                                {activeCategory === 'favorites' 
-                                    ? 'All tracks marked with your heart' 
+                                {activeCategory === 'favorites'
+                                    ? 'All tracks marked with your heart'
                                     : 'Stream the hottest royalty-free gems in lossless audio'}
                             </p>
                         </div>
-                        <button 
-                            onClick={() => setActiveCategory('all')} 
+                        <button
+                            onClick={() => setActiveCategory('all')}
                             className="text-xs font-semibold text-emerald-400 hover:text-emerald-300 transition-colors uppercase tracking-wider"
                         >
                             View All
@@ -306,9 +299,8 @@ const MainContent = () => {
                                     <div
                                         key={track.id}
                                         onClick={() => playTrack(track)}
-                                        className={`group flex items-center justify-between p-2.5 sm:p-3 rounded-xl hover:bg-white/[0.06] transition-all cursor-pointer ${
-                                            isCurrent ? 'bg-white/[0.08] ring-1 ring-emerald-500/30' : ''
-                                        }`}
+                                        className={`group flex items-center justify-between p-2.5 sm:p-3 rounded-xl hover:bg-white/[0.06] transition-all cursor-pointer ${isCurrent ? 'bg-white/[0.08] ring-1 ring-emerald-500/30' : ''
+                                            }`}
                                     >
                                         <div className="flex items-center gap-3 sm:gap-4 min-w-0">
                                             <div className="w-6 text-center text-sm font-semibold text-neutral-500 group-hover:text-white flex-shrink-0">
@@ -326,10 +318,10 @@ const MainContent = () => {
                                                 )}
                                             </div>
 
-                                            <img 
-                                                src={track.cover} 
-                                                alt={track.title} 
-                                                className="w-11 h-11 rounded-lg object-cover flex-shrink-0 border border-white/10 shadow-sm" 
+                                            <img
+                                                src={track.cover}
+                                                alt={track.title}
+                                                className="w-11 h-11 rounded-lg object-cover flex-shrink-0 border border-white/10 shadow-sm"
                                             />
 
                                             <div className="min-w-0">
@@ -427,9 +419,8 @@ const TrackCard = ({ track }) => {
     return (
         <div
             onClick={() => playTrack(track)}
-            className={`glass-card group relative p-3.5 rounded-2xl cursor-pointer select-none transition-all duration-300 ${
-                isCurrent ? 'ring-1 ring-emerald-500/50 bg-white/[0.08]' : ''
-            }`}
+            className={`glass-card group relative p-3.5 rounded-2xl cursor-pointer select-none transition-all duration-300 ${isCurrent ? 'ring-1 ring-emerald-500/50 bg-white/[0.08]' : ''
+                }`}
         >
             <div className="relative w-full aspect-square rounded-xl overflow-hidden mb-3.5 bg-neutral-900 border border-white/5 shadow-md">
                 <img
@@ -440,11 +431,10 @@ const TrackCard = ({ track }) => {
                 />
 
                 {/* Floating Spotify-style play button */}
-                <div className={`absolute bottom-2.5 right-2.5 transform transition-all duration-300 ${
-                    isThisPlaying
+                <div className={`absolute bottom-2.5 right-2.5 transform transition-all duration-300 ${isThisPlaying
                         ? 'opacity-100 translate-y-0 scale-100'
                         : 'opacity-0 translate-y-2 group-hover:opacity-100 group-hover:translate-y-0 scale-95 group-hover:scale-100'
-                }`}>
+                    }`}>
                     <button
                         onClick={(e) => {
                             e.stopPropagation();

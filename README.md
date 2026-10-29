@@ -2,7 +2,17 @@
 
 **Aurelo** is a responsive, modern web-based music streaming application built with **React**, **Vite**, **Tailwind CSS**, and **Lucide React**. It harmonizes the **sleek dark-mode card ergonomics of Spotify** with the **clean, typography-driven, glassmorphic minimalism of Apple Music**.
 
-Streaming lossless, royalty-free audio dynamically powered by the **FreeToUse API** with seamless offline/network fallback buffers.
+Streaming lossless, royalty-free audio dynamically powered by the **Jamendo API v3.0** with seamless offline/network fallback buffers.
+
+---
+
+## 🔑 Jamendo API Configuration (Optional)
+Aurelo comes pre-configured with a working Jamendo Client ID out of the box. If you wish to use your own personal Jamendo developer credentials:
+1. Register a free account at [Jamendo Developer Portal](https://developer.jamendo.com/).
+2. Create a `.env` file in the root folder:
+```env
+VITE_JAMENDO_CLIENT_ID=your_client_id_here
+```
 
 ---
 

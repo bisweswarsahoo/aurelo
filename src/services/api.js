@@ -1,7 +1,10 @@
 /**
- * Aurelo - API Service & Verified Mock Fallbacks
- * Interacting with https://api.freetouse.com/v3
+ * Aurelo - Jamendo Music API Service v3.0
+ * Documentation: https://developer.jamendo.com/v3.0/tracks
  */
+
+export const JAMENDO_CLIENT_ID = import.meta.env.VITE_JAMENDO_CLIENT_ID || '91f7048a';
+const BASE_URL = 'https://api.jamendo.com/v3.0';
 
 export const COLOR_PALETTES = [
     { c1: "#10b981", c2: "#06b6d4", c3: "#3b82f6" }, // Emerald Lagoon
@@ -12,193 +15,205 @@ export const COLOR_PALETTES = [
     { c1: "#f43f5e", c2: "#fb923c", c3: "#a855f7" }  // Electric Coral
 ];
 
+// Curated verified Jamendo tracks for offline / fallback buffer
 export const MOCK_TRACKS = [
     {
-        id: "fc95e0bb-e942-4c4b-874b-a194fd200cf3",
-        title: "Akaneiro",
-        artist: "Johny Grimes",
-        genre: "Chill",
-        duration: 126,
+        id: "1214935",
+        title: "Wish You Were Here",
+        artist: "The.madpix.project",
+        genre: "dance",
+        duration: 270,
         category: "Chill",
-        cover: "https://eu.data.freetouse.com/music/tracks/fc95e0bb-e942-4c4b-874b-a194fd200cf3/cover/webp/md/cover-md.webp",
-        coverLg: "https://eu.data.freetouse.com/music/tracks/fc95e0bb-e942-4c4b-874b-a194fd200cf3/cover/webp/lg/cover-lg.webp",
-        audioUrl: "https://eu.data.freetouse.com/music/tracks/fc95e0bb-e942-4c4b-874b-a194fd200cf3/file/mp3/file.mp3",
-        plays: 3410,
+        cover: "https://usercontent.jamendo.com?type=album&id=145774&width=300&trackid=1214935",
+        coverLg: "https://usercontent.jamendo.com?type=album&id=145774&width=600&trackid=1214935",
+        audioUrl: "https://prod-1.storage.jamendo.com/?trackid=1214935&format=mp32&from=JxM%2BuKvW5jA3WqOxGHyL9Q%3D%3D%7Cu%2BtP9XdvOCjQAdwFybEHoA%3D%3D",
+        plays: 18450,
         colors: COLOR_PALETTES[0]
     },
     {
-        id: "fb14b652-8833-49ff-94f7-f126990c4460",
-        title: "Run",
-        artist: "Unheard",
-        genre: "Electronic",
-        duration: 181,
-        category: "Workout",
-        cover: "https://eu.data.freetouse.com/music/tracks/fb14b652-8833-49ff-94f7-f126990c4460/cover/webp/md/cover-md.webp",
-        coverLg: "https://eu.data.freetouse.com/music/tracks/fb14b652-8833-49ff-94f7-f126990c4460/cover/webp/lg/cover-lg.webp",
-        audioUrl: "https://eu.data.freetouse.com/music/tracks/fb14b652-8833-49ff-94f7-f126990c4460/file/mp3/file.mp3",
-        plays: 8940,
+        id: "1932670",
+        title: "RED LIGHT",
+        artist: "Egor Budennyy",
+        genre: "pop",
+        duration: 190,
+        category: "Electronic",
+        cover: "https://usercontent.jamendo.com?type=album&id=477294&width=300&trackid=1932670",
+        coverLg: "https://usercontent.jamendo.com?type=album&id=477294&width=600&trackid=1932670",
+        audioUrl: "https://prod-1.storage.jamendo.com/?trackid=1932670&format=mp32&from=9uljh9FvgbYcG2CWdKVJgw%3D%3D%7CXxSfA02jdTj3yeNYS%2BQY2g%3D%3D",
+        plays: 14210,
         colors: COLOR_PALETTES[1]
     },
     {
-        id: "253bde6c-990f-47d3-94a4-5c2595cc4b32",
-        title: "Lighthearted",
-        artist: "Zambolino",
-        genre: "Acoustic",
-        duration: 154,
-        category: "Acoustic",
-        cover: "https://eu.data.freetouse.com/music/tracks/253bde6c-990f-47d3-94a4-5c2595cc4b32/cover/webp/md/cover-md.webp",
-        coverLg: "https://eu.data.freetouse.com/music/tracks/253bde6c-990f-47d3-94a4-5c2595cc4b32/cover/webp/lg/cover-lg.webp",
-        audioUrl: "https://eu.data.freetouse.com/music/tracks/253bde6c-990f-47d3-94a4-5c2595cc4b32/file/mp3/file.mp3",
-        plays: 5210,
+        id: "1593988",
+        title: "Lofi Chillout Hip Hop Beat",
+        artist: "Joystock",
+        genre: "chillhop",
+        duration: 149,
+        category: "Chill",
+        cover: "https://usercontent.jamendo.com?type=album&id=365590&width=300&trackid=1593988",
+        coverLg: "https://usercontent.jamendo.com?type=album&id=365590&width=600&trackid=1593988",
+        audioUrl: "https://prod-1.storage.jamendo.com/?trackid=1593988&format=mp32&from=6aumv8ZjdnW6Z%2FSznPfW9Q%3D%3D%7CNYkYXX%2FadAm4t4qnBjAKXQ%3D%3D",
+        plays: 29800,
         colors: COLOR_PALETTES[2]
     },
     {
-        id: "25cb8e0d-e929-4877-9529-7294041d9519",
-        title: "Drowning In The Fog Of Yours",
-        artist: "Johny Grimes",
-        genre: "Orchestral",
-        duration: 130,
-        category: "Cinematic",
-        cover: "https://eu.data.freetouse.com/music/tracks/25cb8e0d-e929-4877-9529-7294041d9519/cover/webp/md/cover-md.webp",
-        coverLg: "https://eu.data.freetouse.com/music/tracks/25cb8e0d-e929-4877-9529-7294041d9519/cover/webp/lg/cover-lg.webp",
-        audioUrl: "https://eu.data.freetouse.com/music/tracks/25cb8e0d-e929-4877-9529-7294041d9519/file/mp3/file.mp3",
-        plays: 4120,
+        id: "2171046",
+        title: "Beautiful Chill Ambient",
+        artist: "DHDMusic",
+        genre: "chillout",
+        duration: 183,
+        category: "Ambient",
+        cover: "https://usercontent.jamendo.com?type=album&id=566743&width=300&trackid=2171046",
+        coverLg: "https://usercontent.jamendo.com?type=album&id=566743&width=600&trackid=2171046",
+        audioUrl: "https://prod-1.storage.jamendo.com/?trackid=2171046&format=mp32&from=ckw8%2Fpy432KTdVa6yhBuBg%3D%3D%7CS93un8jO2%2B075ffzMEfgAg%3D%3D",
+        plays: 9640,
         colors: COLOR_PALETTES[3]
     },
     {
-        id: "d28fb596-cc04-421e-b749-04aef6adcbef",
-        title: "Peace",
-        artist: "Unheard",
-        genre: "Electronic",
-        duration: 133,
-        category: "Chill",
-        cover: "https://eu.data.freetouse.com/music/tracks/d28fb596-cc04-421e-b749-04aef6adcbef/cover/webp/md/cover-md.webp",
-        coverLg: "https://eu.data.freetouse.com/music/tracks/d28fb596-cc04-421e-b749-04aef6adcbef/cover/webp/lg/cover-lg.webp",
-        audioUrl: "https://eu.data.freetouse.com/music/tracks/d28fb596-cc04-421e-b749-04aef6adcbef/file/mp3/file.mp3",
-        plays: 6890,
+        id: "26737",
+        title: "Breathe",
+        artist: "Tryad",
+        genre: "chillout",
+        duration: 384,
+        category: "Acoustic",
+        cover: "https://usercontent.jamendo.com?type=album&id=3661&width=300&trackid=26737",
+        coverLg: "https://usercontent.jamendo.com?type=album&id=3661&width=600&trackid=26737",
+        audioUrl: "https://prod-1.storage.jamendo.com/?trackid=26737&format=mp32&from=a07jNBh4x8IeegTckBsfSg%3D%3D%7CScVxHElS429%2F4cQ6llOVSg%3D%3D",
+        plays: 38900,
         colors: COLOR_PALETTES[4]
     },
     {
-        id: "cdb374ee-fd0d-464d-8b69-49faef2b2f1a",
-        title: "Soft Static",
-        artist: "Zolvi",
-        genre: "Soundtrack",
-        duration: 135,
+        id: "15655",
+        title: "Invisible Walls",
+        artist: "Revolution Void",
+        genre: "nujazz",
+        duration: 420,
         category: "Ambient",
-        cover: "https://eu.data.freetouse.com/music/tracks/cdb374ee-fd0d-464d-8b69-49faef2b2f1a/cover/webp/md/cover-md.webp",
-        coverLg: "https://eu.data.freetouse.com/music/tracks/cdb374ee-fd0d-464d-8b69-49faef2b2f1a/cover/webp/lg/cover-lg.webp",
-        audioUrl: "https://eu.data.freetouse.com/music/tracks/cdb374ee-fd0d-464d-8b69-49faef2b2f1a/file/mp3/file.mp3",
-        plays: 2980,
+        cover: "https://usercontent.jamendo.com?type=album&id=2225&width=300&trackid=15655",
+        coverLg: "https://usercontent.jamendo.com?type=album&id=2225&width=600&trackid=15655",
+        audioUrl: "https://prod-1.storage.jamendo.com/?trackid=15655&format=mp32&from=ecJ41Il4cwT2t%2Ff%2FgHEL9w%3D%3D%7CC96Xi1I3yFIHEY2shGcX6Q%3D%3D",
+        plays: 47200,
         colors: COLOR_PALETTES[5]
-    },
-    {
-        id: "ede4ae2d-3acd-4548-867e-dc98e794ce9c",
-        title: "Careful Advance",
-        artist: "Zolvi",
-        genre: "Soundtrack",
-        duration: 138,
-        category: "Mysterious",
-        cover: "https://eu.data.freetouse.com/music/tracks/ede4ae2d-3acd-4548-867e-dc98e794ce9c/cover/webp/md/cover-md.webp",
-        coverLg: "https://eu.data.freetouse.com/music/tracks/ede4ae2d-3acd-4548-867e-dc98e794ce9c/cover/webp/lg/cover-lg.webp",
-        audioUrl: "https://eu.data.freetouse.com/music/tracks/ede4ae2d-3acd-4548-867e-dc98e794ce9c/file/mp3/file.mp3",
-        plays: 3870,
-        colors: COLOR_PALETTES[0]
-    },
-    {
-        id: "b88aa78d-6909-45ba-98ce-9a16d929fe10",
-        title: "Bare Signal",
-        artist: "Zolvi",
-        genre: "Electronic",
-        duration: 149,
-        category: "Electronic",
-        cover: "https://eu.data.freetouse.com/music/tracks/b88aa78d-6909-45ba-98ce-9a16d929fe10/cover/webp/md/cover-md.webp",
-        coverLg: "https://eu.data.freetouse.com/music/tracks/b88aa78d-6909-45ba-98ce-9a16d929fe10/cover/webp/lg/cover-lg.webp",
-        audioUrl: "https://eu.data.freetouse.com/music/tracks/b88aa78d-6909-45ba-98ce-9a16d929fe10/file/mp3/file.mp3",
-        plays: 4720,
-        colors: COLOR_PALETTES[1]
     }
 ];
 
-export const normalizeTrack = (item, index = 0) => {
-    const artistName = (item.artists && item.artists[0] && item.artists[0][1]?.name)
-        ? item.artists[0][1].name
-        : (item.record_label || "Aurelo Artists");
+    export const normalizeJamendoTrack = (item, index = 0) => {
+        const rawCover = item.image || item.album_image || '';
+        const coverSm = rawCover || MOCK_TRACKS[0].cover;
+        const coverLg = rawCover ? rawCover.replace('width=300', 'width=600') : coverSm;
 
-    const categoryName = (item.categories && item.categories[0] && item.categories[0][1]?.name)
-        ? item.categories[0][1].name
-        : (item.genre || "Electronic");
+        const genre = item.musicinfo?.tags?.genres?.[0] ||
+            item.musicinfo?.tags?.vartags?.[0] ||
+            'Indie';
 
-    const colorPreset = COLOR_PALETTES[index % COLOR_PALETTES.length];
+        const colorPreset = COLOR_PALETTES[index % COLOR_PALETTES.length];
 
-    return {
-        id: item.id || `track-${index}`,
-        title: item.title || "Untitled Track",
-        artist: artistName,
-        genre: item.genre || categoryName,
-        duration: Math.round(item.duration || 180),
-        category: categoryName,
-        cover: item.thumbnails?.md || item.thumbnails?.sm || MOCK_TRACKS[0].cover,
-        coverLg: item.thumbnails?.lg || item.thumbnails?.xl || MOCK_TRACKS[0].coverLg,
-        audioUrl: item.files?.mp3 || MOCK_TRACKS[index % MOCK_TRACKS.length].audioUrl,
-        plays: item.plays || Math.floor(Math.random() * 5000 + 1200),
-        colors: colorPreset
+        return {
+            id: String(item.id || `jamendo-${index}`),
+            title: item.name || "Untitled Track",
+            artist: item.artist_name || "Jamendo Artist",
+            genre: genre.charAt(0).toUpperCase() + genre.slice(1),
+            duration: Math.round(item.duration || 180),
+            category: genre,
+            cover: coverSm,
+            coverLg: coverLg,
+            audioUrl: item.audio || item.audiodownload,
+            plays: Math.floor(Math.random() * 9000 + 1500),
+            colors: colorPreset
+        };
     };
-};
 
-export const fetchTracks = async () => {
-    const endpoints = [
-        'https://api.freetouse.com/v3/music/tracks/all?limit=30',
-        'https://api.freetouse.com/v3/tracks'
-    ];
+        /**
+         * Fetch tracks from Jamendo API
+         * @param {string} category - Optional tag filter (e.g. 'all', 'chill', 'electronic', 'acoustic', 'workout', 'ambient')
+         */
+        export const fetchTracks = async (category = 'all') => {
+            try {
+                const params = new URLSearchParams({
+                    client_id: JAMENDO_CLIENT_ID,
+                    format: 'json',
+                    limit: '35',
+                    order: 'popularity_total',
+                    audioformat: 'mp32',
+                    include: 'musicinfo'
+                });
 
-    for (const url of endpoints) {
-        try {
-            const controller = new AbortController();
-            const timeoutId = setTimeout(() => controller.abort(), 4500);
-            const res = await fetch(url, { signal: controller.signal });
-            clearTimeout(timeoutId);
-            if (res.ok) {
-                const json = await res.json();
-                if (json.ok && Array.isArray(json.data) && json.data.length > 0) {
-                    return {
-                        tracks: json.data.map((item, idx) => normalizeTrack(item, idx)),
-                        isLive: true
+                            if (category && category !== 'all' && category !== 'favorites') {
+                                const tagMap = {
+                                    chill: 'chillout+lofi',
+                                    electronic: 'electronic+dance',
+                                    acoustic: 'acoustic',
+                                    workout: 'energetic+workout',
+                                    ambient: 'ambient+relaxation'
+                                };
+                                params.set('tags', tagMap[category.toLowerCase()] || category);
+                            }
+
+                            const url = `${BASE_URL}/tracks/?${params.toString()}`;
+                            const controller = new AbortController();
+                            const timeoutId = setTimeout(() => controller.abort(), 6000);
+
+                            const res = await fetch(url, { signal: controller.signal });
+                            clearTimeout(timeoutId);
+
+                            if (res.ok) {
+                                const json = await res.json();
+                                if (json.headers?.status === 'success' && Array.isArray(json.results) && json.results.length > 0) {
+                                    return {
+                                        tracks: json.results.map((item, idx) => normalizeJamendoTrack(item, idx)),
+                                        isLive: true
+                                    };
+                                }
+                            }
+                        } catch (err) {
+                            console.warn('Jamendo API fetch failed, activating fallback buffer:', err.message);
+                        }
+
+                        return {
+                            tracks: [...MOCK_TRACKS],
+                            isLive: false
+                        };
                     };
-                }
-            }
-        } catch (err) {
-            console.warn(`Aurelo API fetch attempt failed for ${url}:`, err.message);
-        }
-    }
 
-    // Fallback to verified local tracks
-    return {
-        tracks: [...MOCK_TRACKS],
-        isLive: false
-    };
-};
+                    /**
+                     * Live search Jamendo API by track or artist name
+                     */
+                    export const searchTracks = async (query, localTracks = []) => {
+                        if (!query?.trim()) return [];
 
-export const searchTracks = async (query, localTracks = []) => {
-    if (!query) return [];
+                        try {
+                            const params = new URLSearchParams({
+                                client_id: JAMENDO_CLIENT_ID,
+                                format: 'json',
+                                limit: '24',
+                                namesearch: query.trim(),
+                                order: 'popularity_total',
+                                audioformat: 'mp32',
+                                include: 'musicinfo'
+                            });
 
-    try {
-        const res = await fetch(`https://api.freetouse.com/v3/music/tracks/search?query=${encodeURIComponent(query)}&limit=18`);
-        if (res.ok) {
-            const json = await res.json();
-            if (json.ok && Array.isArray(json.data) && json.data.length > 0) {
-                return json.data.map((item, idx) => normalizeTrack(item, idx));
-            }
-        }
-    } catch (e) {
-        console.warn('Live search failed, falling back to local query');
-    }
+                            const url = `${BASE_URL}/tracks/?${params.toString()}`;
+                            const controller = new AbortController();
+                            const timeoutId = setTimeout(() => controller.abort(), 5000);
 
-    const q = query.toLowerCase();
-    return localTracks.filter(t =>
-        t.title.toLowerCase().includes(q) ||
-        t.artist.toLowerCase().includes(q) ||
-        t.genre.toLowerCase().includes(q) ||
-        t.category.toLowerCase().includes(q)
-    );
-};
+                            const res = await fetch(url, { signal: controller.signal });
+                            clearTimeout(timeoutId);
 
+                            if (res.ok) {
+                                const json = await res.json();
+                                    if (json.headers?.status === 'success' && Array.isArray(json.results) && json.results.length > 0) {
+                                        return json.results.map((item, idx) => normalizeJamendoTrack(item, idx));
+                                    }
+                                }
+                            } catch (e) {
+                                console.warn('Jamendo search failed, falling back to local search');
+                            }
+
+                            // Client-side fallback filter
+                            const q = query.toLowerCase();
+                            return localTracks.filter(t =>
+                                t.title.toLowerCase().includes(q) ||
+                                t.artist.toLowerCase().includes(q) ||
+        t.genre.toLowerCase().includes(q)
+                            );
+                        };

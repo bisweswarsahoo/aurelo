@@ -8,13 +8,12 @@ import {
     Shuffle,
     Repeat,
     Repeat1,
-    Volume2,
-    Volume1,
-    VolumeX,
     ListMusic,
     Maximize2,
     Heart
 } from 'lucide-react';
+import AudioSeekbar from './AudioSeekbar';
+import VolumeControl from './VolumeControl';
 
 const formatTime = (seconds) => {
     if (isNaN(seconds) || seconds < 0) return "0:00";
@@ -48,7 +47,6 @@ const PlayerBar = () => {
     } = useAudio();
 
     const isLiked = currentTrack && likedTrackIds.has(currentTrack.id);
-    const progressPercent = duration ? (currentTime / duration) * 100 : 0;
 
     return (
         <footer className="h-24 bg-neutral-950/90 backdrop-blur-3xl border-t border-white/10 px-4 sm:px-6 md:px-8 flex items-center justify-between z-40 select-none">
@@ -149,85 +147,61 @@ const PlayerBar = () => {
 
                 {/* Scrubber & Timestamps */}
                 <div className="w-full flex items-center gap-2.5 sm:gap-3 text-[11px] font-mono text-neutral-400">
-                    <span className="w-9 text-right">{formatTime(currentTime)}</span>
-                    <div className="relative flex-1 flex items-center">
-                        <input
-                            type="range"
-                            min="0"
-                            max="100"
-                            step="0.1"
-                            value={progressPercent || 0}
-                            onChange={(e) => seekTo(parseFloat(e.target.value))}
-                            className="seek-slider"
-                            style={{ '--seek-percent': `${progressPercent}%` }}
-                        />
+                    <span className="w-9 text-right tabular-nums">{formatTime(currentTime)}</span>
+                        <div className="flex-1">
+                            <AudioSeekbar
+                                currentTime={currentTime}
+                                duration={duration}
+                                onSeek={seekTo}
+                            />
+                        </div>
+                        <span className="w-9 text-left tabular-nums">{formatTime(duration)}</span>
                     </div>
-                    <span className="w-9 text-left">{formatTime(duration)}</span>
+
                 </div>
 
-            </div>
+                {/* Right: Live Equalizer, Queue Drawer, Volume & Fullscreen Modal */}
+                <div className="flex items-center justify-end gap-3 sm:gap-4 w-1/4">
 
-            {/* Right: Live Equalizer, Queue Drawer, Volume & Fullscreen Modal */}
-            <div className="flex items-center justify-end gap-3 sm:gap-4 w-1/4">
+                    {/* Live Equalizer Visualizer Bars */}
+                    <div className={`hidden sm:flex items-center gap-1 h-5 px-2 ${!isPlaying ? 'paused' : ''}`}>
+                        <span className="equalizer-bar" />
+                        <span className="equalizer-bar" />
+                        <span className="equalizer-bar" />
+                        <span className="equalizer-bar" />
+                    </div>
 
-                {/* Live Equalizer Visualizer Bars */}
-                <div className={`hidden sm:flex items-center gap-1 h-5 px-2 ${!isPlaying ? 'paused' : ''}`}>
-                    <span className="equalizer-bar" />
-                    <span className="equalizer-bar" />
-                    <span className="equalizer-bar" />
-                    <span className="equalizer-bar" />
-                </div>
-
-                {/* Queue Drawer Button */}
-                <button
-                    onClick={() => setIsQueueOpen(prev => !prev)}
-                    className="text-neutral-400 hover:text-white transition-colors p-1"
-                    title="Play Queue"
-                >
-                    <ListMusic className="w-5 h-5" />
-                </button>
-
-                {/* Volume Slider with Mute Toggle */}
-                <div className="hidden md:flex items-center gap-2 group w-28">
+                    {/* Queue Drawer Button */}
                     <button
-                        onClick={toggleMute}
+                        onClick={() => setIsQueueOpen(prev => !prev)}
                         className="text-neutral-400 hover:text-white transition-colors p-1"
-                        title={isMuted ? "Unmute" : "Mute"}
+                        title="Play Queue"
                     >
-                        {isMuted || volume === 0 ? (
-                            <VolumeX className="w-5 h-5" />
-                        ) : volume < 0.5 ? (
-                            <Volume1 className="w-5 h-5" />
-                        ) : (
-                            <Volume2 className="w-5 h-5" />
-                        )}
+                        <ListMusic className="w-5 h-5" />
                     </button>
-                    <input
-                        type="range"
-                        min="0"
-                        max="1"
-                        step="0.01"
-                        value={isMuted ? 0 : volume}
-                        onChange={(e) => changeVolume(parseFloat(e.target.value))}
-                        className="volume-slider"
-                        style={{ '--vol-percent': `${(isMuted ? 0 : volume) * 100}%` }}
+
+                    {/* Re-designed Smooth Volume Control with Percentage Tooltip */}
+                    <VolumeControl
+                        volume={volume}
+                        isMuted={isMuted}
+                        onVolumeChange={changeVolume}
+                        onToggleMute={toggleMute}
+                        className="hidden md:flex"
                     />
+
+                    {/* Expand Fullscreen Modal Button */}
+                    <button
+                        onClick={() => setIsModalOpen(true)}
+                        className="text-neutral-400 hover:text-white transition-colors p-1"
+                        title="Fullscreen Player"
+                    >
+                        <Maximize2 className="w-4 h-4" />
+                    </button>
+
                 </div>
-
-                {/* Expand Fullscreen Modal Button */}
-                <button
-                    onClick={() => setIsModalOpen(true)}
-                    className="text-neutral-400 hover:text-white transition-colors p-1"
-                    title="Fullscreen Player"
-                >
-                    <Maximize2 className="w-4 h-4" />
-                </button>
-
-            </div>
 
         </footer>
     );
 };
 
 export default PlayerBar;
-
