@@ -1,209 +1,23 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="dark">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!--Link html file with fontawesome for adding font styles-->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <title>Spotify - Web Player: Music for Everyone</title>
-    <link rel="stylesheet" href="styles.css">
-    <link rel="icon" href="./Assets/logo.png">
+    <title>Aurelo • Music for the Next Era</title>
+    <link rel="icon" type="image/png" href="/logo.png">
+
+    <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=Tektur:wght@500&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
 </head>
-<body>
-    <div class="main">
-        <div class="sidebar">
-            <div class="navbar">
-                <div class="nav">
-                    <div class="nav-option" style="opacity: 1">
-                        <img src="./Assets/logo.png" class="img">
-                        <a href="#">Spotify</a>
-                    </div>
-                    <div class="nav-option" style="opacity: 1">
-                        <i class="fa-solid fa-house"></i>
-                        <a href="#">Home</a>
-                    </div>
-                    <div class="nav-option">
-                        <i class="fa-solid fa-magnifying-glass"></i>
-                        <a href="#">Search</a>
-                    </div>
-                </div>
-            </div>
-            <div class="library">
-                <div class="options" style="background-color: #141414;">
-                    <div class="lib-options">
-                        <img src="./Assets/library_icon.png" class="img">
-                        <a href="#">Your Library</a>
-                    </div>
-                    <div class="icons">
-                        <i class="fa-solid fa-plus"></i>
-                    </div>   
-                </div>
-                <div class="lib-box">
-                    <section class="box">
-                        <p class="box-p1">Create your first playlist</p>
-                        <p class="box-p2">It's easy, we'll help you</p>
-                        <button class="badge hide">Create playlist</button>
-                    </section>
 
-                    <section class="box" >
-                        <p class="box-p1">Let's find some podcasts to follow</p>
-                        <p class="box-p2">We'll keep you updated on new episodes</p>
-                        <button class="badge hide">Browse podcasts</button>
-                    </section>
-                </div>
-            </div>
-        </div>
-
-        <div class="main-content">
-            <div class="sticky-nav">
-                <div class="sticky-nav-icons">
-                    <img src="./Assets/backward_icon.png">
-                    <img src="./Assets/forward_icon.png" class="hide">
-                </div>
-                <div class="sticky-nav-options">
-                    <button class="badge nav-item hide">Explore Premium</button>
-                    <button class="badge nav-item dark-badge"><i class="fa-regular fa-circle-down" style="margin-right: 5px; "></i>Install App</button>
-                <i class="fa-regular fa-user nav-item"></i>
-                </div>
-            </div>
-
-            <h2>Recently Played</h2>
-            <div class="cards-container">
-                <div class="card">
-                    <img src="./Assets/card1img.jpeg" class="card-img">
-                    <p class="card-title">Top 50 - Global</p>
-                    <p class="card-info">Your daily updates of the most played tracks right now - Global.</p>
-                </div>
-            </div>
-            <h2>Trending now near you</h2>
-            <div class="cards-container">
-                <div class="card">
-                    <img src="./Assets/card2img.jpeg" class="card-img">
-                    <p class="card-title">Top 50 - Global</p>
-                    <p class="card-info">Your daily updates of the most played tracks</p>
-                </div>
-                <div class="card">
-                    <img src="./Assets/card3img.jpeg" class="card-img">
-                    <p class="card-title">Top 50 - Global</p>
-                    <p class="card-info">Your daily updates of the most played tracks</p>
-                </div>
-                <div class="card">
-                    <img src="./Assets/card4img.jpeg" class="card-img">
-                    <p class="card-title">Top 50 - Global</p>
-                    <p class="card-info">Your daily updates of the most played tracks</p>
-                </div>
-                <div class="card">
-                    <img src="./Assets/card3img.jpeg" class="card-img">
-                    <p class="card-title">Top 50 - Global</p>
-                    <p class="card-info">Your daily updates of the most played tracks</p>
-                </div>
-                <div class="card">
-                    <img src="./Assets/card1img.jpeg" class="card-img">
-                    <p class="card-title">Top 50 - Global</p>
-                    <p class="card-info">Your daily updates of the most played tracks</p>
-                </div>
-                <div class="card">
-                    <img src="./Assets/card2img.jpeg" class="card-img">
-                    <p class="card-title">Top 50 - Global</p>
-                    <p class="card-info">Your daily updates of the most played tracks</p>
-                </div>
-                <div class="card">
-                    <img src="./Assets/card3img.jpeg" class="card-img">
-                    <p class="card-title">Top 50 - Global</p>
-                    <p class="card-info">Your daily updates of the most played tracks</p>
-                </div>
-                <div class="card">
-                    <img src="./Assets/card4img.jpeg" class="card-img">
-                    <p class="card-title">Top 50 - Global</p>
-                    <p class="card-info">Your daily updates of the most played tracks</p>
-                </div>                
-            </div>
-
-            <h2>Featured Charts</h2>
-            <div class="cards-container">
-                <div class="card">
-                    <img src="./Assets/card5img.jpeg" class="card-img">
-                    <p class="card-title">Top Songs - Global</p>
-                    <p class="card-info">Your weekly update of the most played tracks right now - Global.</p>
-                </div>
-                <div class="card">
-                    <img src="./Assets/card6img.jpeg" class="card-img">
-                    <p class="card-title">Top Songs - India</p>
-                    <p class="card-info">Your weekly update of the most played tracks right now - India.</p>
-                </div>
-                <div class="card">
-                    <img src="./Assets/card1img.jpeg" class="card-img">
-                    <p class="card-title">Top 50 - Global</p>
-                    <p class="card-info">Your daily updates of the most played tracks.</p>
-                </div>
-            </div>
-            <div class="footer">
-                <div class="details">
-                    <div class="detail1">
-                        <ul>
-                            <p class="heading">Company</p>                              
-                            <span class="list-items">About</span>
-                            <span class="list-items">Jobs</span>
-                            <span class="list-items">For the Record</span>
-                        </ul>
-                    </div>
-                    <div class="detail2">
-                        <ul>
-                            <p class="heading">Communities</p>
-                            <span class="list-items">For Artists</span>
-                            <span class="list-items">Developers</span>
-                            <span class="list-items">Advertising</span>
-                            <span class="list-items">Investors</span>
-                            <span class="list-items">Vendors</span>
-                        </ul>
-                    </div>
-                    <div class="detail3">
-                        <ul>        
-                            <p class="heading">Useful links</p>
-                            <span class="list-items">Support</span>
-                            <span class="list-items">Free Mobile App</span>
-                        </ul>
-                    </div>
-                </div>
-                <hr>
-                <div class="copyright">© 2024 Spotify AB</div>
-            </div>
-        </div>
-        <div class="music-player">
-            <div class="album">
-                <img src="./Assets/album_picture.jpeg" class="album-icon">
-                <p class="info"><b>Daylight</b></br>David Kushner</p>
-            </div>
-            <div class="bt">
-                <img src="./Assets/album_icon1.png">
-            </div>
-            <div class="player">
-                <div class="player-controls">
-                    <img src="./Assets/player_icon1.png" class="player-control-icon">
-                    <img src="./Assets/player_icon2.png" class="player-control-icon">
-                    <img src="./Assets/player_icon3.png" class="player-control-icon play" style="opacity: 1; height: 2rem;">
-                    <img src="./Assets/player_icon4.png" class="player-control-icon">
-                    <img src="./Assets/player_icon5.png" class="player-control-icon">
-                </div>
-                <div class="playback-bar">
-                    <span class="time">00:00</span>
-                    <input type="range" min="0" max="100" class="progress-bar" step="1">
-                    <span class="time">03:33</span>
-                </div>
-            </div>
-            <div class="controls">
-                <img src="./Assets/controls_icon1.png" class="controls-icon">
-                <img src="./Assets/controls_icon2.png" class="controls-icon">
-                <img src="./Assets/controls_icon3.png" class="controls-icon">
-                <img src="./Assets/controls_icon4.png" class="controls-icon">
-                <img src="./Assets/controls_icon5.png" class="controls-icon">
-                <img src="./Assets/controls_icon6.png" class="controls-icon">
-                <img src="./Assets/controls_icon7.png" class="controls-icon">
-            </div>
-        </div>
-    </div>
+<body class="bg-[#08090d] text-neutral-100 overflow-hidden antialiased selection:bg-emerald-500 selection:text-black">
+    <div id="root"></div>
+    <script type="module" src="/src/main.jsx"></script>
 </body>
+
 </html>
